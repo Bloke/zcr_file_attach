@@ -146,11 +146,10 @@ function ext_file_attach($evt, $stp, &$payload)
         $payload['headers']['MIME-Version'] = '1.0';
         $payload['headers']['content_type'] = 'multipart/mixed; boundary=' . $fileBoundary;
         $payload['body'] = '--' . $fileBoundary . $sep
-            . 'Content-Type: multipart/alternative; boundary=' . $textBoundary . $sep
-            . '--' . $textBoundary . $sep
-            . 'Content-Type: text/plain; charset=utf-8' . $sep
+            . 'Content-Type: multipart/alternative; boundary=' . $fileBoundary . $sep
+            . '--' . $fileBoundary . $sep
+            . 'Content-Type: text/plain; charset=iso-8859-1' . $sep
             . $payload['body'] . $sep
-            . '--' . $textBoundary . '--' . $sep
             . '--' . $fileBoundary . $sep
             . 'Content-Type:' . $file_type . '; '
                 . 'name="' . $file_name . '"' . $sep
